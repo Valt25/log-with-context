@@ -142,6 +142,10 @@ class Logger:
         """Exception."""
         return self._msg(self.base_logger.exception, msg, *args, **kwargs)
 
+    def __getattr__(self, name):
+        """get attribute of base logger in case object of this class have nu such attribute"""
+        return getattr(self.base_logger, name)
+
 
 class add_logging_context:
     """
